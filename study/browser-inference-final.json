@@ -1,0 +1,11 @@
+{
+  "before": "2\n36.8%\n8\n19.5%\n3\n13.0%",
+  "after": "2\n25.7%\n8\n19.3%\n3\n10.9%",
+  "changed": true,
+  "domain": "inverted",
+  "pixelIndicesChanged": [
+    27,
+    28
+  ],
+  "waitedForCompletion": true
+}

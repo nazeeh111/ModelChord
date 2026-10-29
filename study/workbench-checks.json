@@ -1,0 +1,40 @@
+{
+  "catalog_experts": 3,
+  "changed_input_changed_output": true,
+  "build_id": "faabf45eb68e4fa59b74cbc2d5758791",
+  "repair_status": "no acceptable candidate found",
+  "metrics": {
+    "clean": {
+      "accuracy": 0.7555555701255798,
+      "cross_entropy": 0.7046229839324951,
+      "ece_10": 0.044361583539284766,
+      "examples": 270
+    },
+    "left": {
+      "accuracy": 0.5185185074806213,
+      "cross_entropy": 1.3376401662826538,
+      "ece_10": 0.1361629394814372,
+      "examples": 270
+    },
+    "right": {
+      "accuracy": 0.4333333373069763,
+      "cross_entropy": 1.4525079727172852,
+      "ece_10": 0.17033378302585334,
+      "examples": 270
+    },
+    "inverted": {
+      "accuracy": 0.0,
+      "cross_entropy": 3.724663019180298,
+      "ece_10": 0.333804071880877,
+      "examples": 270
+    }
+  },
+  "zip_bytes": 68636,
+  "failure_checks": {
+    "reject traversal": true,
+    "reject unknown expert": true,
+    "reject cross-origin": true,
+    "reject nonfinite": true,
+    "reject unknown artifact": true
+  }
+}

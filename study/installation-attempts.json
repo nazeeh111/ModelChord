@@ -1,0 +1,20 @@
+[
+  {
+    "evidence_file": "independent-text-attempt1.json",
+    "returncode": 124,
+    "failure": "initial 60-second worker timeout",
+    "resolved": true
+  },
+  {
+    "evidence_file": "independent-text-attempt2.json",
+    "returncode": 1,
+    "failure": "clean wheel lacked explicit packaging dependency; ModuleNotFoundError in safetensors import",
+    "resolved": true
+  },
+  {
+    "evidence_file": "independent-vision-attempt1.json",
+    "returncode": 1,
+    "failure": "clean wheel lacked explicit packaging dependency; ModuleNotFoundError in safetensors import",
+    "resolved": true
+  }
+]

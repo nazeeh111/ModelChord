@@ -1,0 +1,1 @@
+One static artifact. The inverted digit is misclassified as 2; confidence 36.8%.

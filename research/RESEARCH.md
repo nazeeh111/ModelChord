@@ -1,0 +1,58 @@
+# MODELCHORD research and scope
+
+Checked 2026-10-29. These are design inputs and literature observations, not executed benchmark results. Code and reports must distinguish their own implementations from authors' reported performance.
+
+## Name and portfolio overlap
+
+Connected GitHub searches returned zero repositories for both `user:nazeeh111 ModelChord` and global `ModelChord`. The owner-filtered repository inventory had no matching name. This establishes a reasonable GitHub naming check, not trademark clearance or proof that the name is unused elsewhere. The public names and inspected README blob identities are in [overlap-evidence.json](overlap-evidence.json).
+
+Four nearby portfolio READMEs were inspected through the connected GitHub plugin. [ModelForge](https://github.com/nazeeh111/ModelForge) is a Rust facade for polynomial operations and numerical methods. [ReflexFoundry](https://github.com/nazeeh111/ReflexFoundry) trains a small decision head for bounded workflow decisions. [KERNELDARWIN](https://github.com/nazeeh111/KERNELDARWIN) investigates numerical-program performance with retained experiment evidence. [ReplaySmith](https://github.com/nazeeh111/ReplaySmith) records and replays browser workflows. Static specialist composition under task floors has a distinct operational purpose. No other portfolio files or visibility settings were modified.
+
+## Existing work and defensible contribution
+
+[mergekit](https://github.com/arcee-ai/mergekit) already supplies memory-conscious pretrained-language-model merging, including task-vector methods. [FusionBench](https://github.com/tanganke/fusion_bench) supplies model fusion algorithms, task/model pools and evaluation tooling; its [paper](https://arxiv.org/abs/2406.03280v4) emphasizes varied evaluation settings. An interface around these tools is not a new merging method. MODELCHORD should implement a narrow, inspectable build contract and repair procedure, while crediting these foundations.
+
+The strongest defensible claim is an experimental implementation of **validation-gated, worst-deficit-directed low-rank correction with protected-task margins**, folded into one static artifact. Low-rank updates, activation statistics, adaptive allocation, interference reduction and merge repair are individually established. Novelty beyond this engineering combination has not been established by this search. General superiority requires broader independent experiments.
+
+| Primary source | Relevant mechanism and implication |
+| --- | --- |
+| [TSV-Merge, Gargiulo et al., 2412.00081v2](https://arxiv.org/html/2412.00081v2) | Compress each layer's task matrices, decorrelate concatenated left/right singular vectors with a polar factor, reconstruct static weights. This is the required strong spectral baseline. |
+| [TIES, Yadav et al., 2306.01708v2](https://arxiv.org/abs/2306.01708v2) | Trim small updates, elect coordinate signs, then average only sign-compatible values. Tune keep fraction and scale on selection data. |
+| [DARE, Yu et al., 2311.03099v3](https://arxiv.org/abs/2311.03099v3) | Randomly drop task-vector coordinates and rescale survivors by inverse keep probability. Fix and record the stochastic seed. Sparsification alone is not repair evidence. |
+| [RegMean, Jin et al., 2212.09849v6](https://arxiv.org/abs/2212.09849v6) | Merge linear weights using input-activation second moments. Its title uses “dataless,” but collecting activation statistics is data-assisted in MODELCHORD's accounting. |
+| [AdaMerging, Yang et al., 2310.02575](https://arxiv.org/abs/2310.02575) | Learn task/layer coefficients using entropy on unlabeled samples. If replacing entropy with labeled loss, call that a supervised coefficient baseline, not a faithful AdaMerging replication. |
+| [PAVE, An et al., 2510.14697v2, revised Oct 20 2026](https://arxiv.org/html/2510.14697v2) | Uses task-input covariance to identify relevant task-vector subspaces and allocates spectral ranks by normalized activated pruning error. Covariance-guided rank allocation is already prior art. |
+| [SVC, Li et al., 2602.05536v2](https://arxiv.org/abs/2602.05536v2) | Corrects over-accumulated shared spectral directions by rescaling singular values. Orthogonalization is not the only strong spectral alternative. |
+| [ESM, Li et al., 2606.19164v4, revised Oct 13 2026](https://arxiv.org/abs/2606.19164v4) | Uses proxy-data output shifts to identify essential directions, weights and orthogonalizes them. ESM++ adds dynamic residual experts, which would violate this project's single-static-artifact requirement. |
+| [PRISM, Lee et al., 2610.03199v1, Oct 2 2026](https://arxiv.org/abs/2610.03199v1) | Predicts certain merge collapses from cross-specialist task-vector variance and uses variance-calibrated soft thresholding. Its fast-path gate and repair goal overlap. These are author-reported LLM results, not a universal safety criterion. |
+| [CrossMean, Eliasof, 2610.14762v1, Oct 10 2026](https://arxiv.org/abs/2610.14762v1) | Pairs merged and expert input activations in a bilinear statistic. This addresses propagation mismatch from independently merging layers; ordinary RegMean does not. |
+
+## Baseline equations for the small suite
+
+Let `D_i = W_i - W_0` be a task's matrix update. All models must share the identical base tensor identities and declared input/output contracts. Shape equality is insufficient.
+
+* Task arithmetic: `W = W_0 + alpha * sum_i D_i`. Record alpha and task count. Weight averaging is the particular `alpha=1/T` case.
+* TIES: within each task vector retain the largest magnitudes; elect the coordinate sign from the sum of retained values; average values agreeing with that sign. Define zero-sign handling and whether trimming is layerwise or globally flattened. A layerwise implementation is a disclosed variant of the usual flattened procedure.
+* DARE: `D_i' = Bernoulli(1-p) * D_i / (1-p)`, then apply the declared merge operator. Reject `p=1`.
+* TSV-Merge: SVD each `D_i`; take `k=floor(min(out,in)/T)` leading components. Concatenate retained `U_i`, singular values and `V_i`. For thin SVDs `U=P_u S_u Q_u^T` and `V=P_v S_v Q_v^T`, use polar factors `P_u Q_u^T` and `P_v Q_v^T`. Reconstruct `D = U_perp diag(concat(s_i)) V_perp^T`; export `W_0+alpha D`. Bias/vector handling must be declared separately. For tiny layers with `k=0`, disclose an ordinary-merge fallback rather than silently discarding all knowledge.
+* RegMean: for PyTorch's `y = x W^T`, use `G_i=X_i^T X_i/n_i` and solve `W_m (sum_i G_i + ridge I) = sum_i W_i G_i`. Equal task weighting follows from normalized covariances. Raw unnormalized statistics weight larger task datasets more. Add a bias feature or disclose averaged biases. Off-diagonal shrinkage and ridge strength are recorded, selection-tuned regularizers. The [FusionBench reference](https://tanganke.github.io/fusion_bench/algorithms/regmean/) presents the transposed storage convention.
+
+These equations support independent implementations; no upstream source code was copied. Credit methods in documentation and disclose deviations. Implementing RegMean and TSV counts as execution only when the run log and outputs demonstrate their actual use.
+
+## Data eligibility and representation
+
+[UCI Optical Recognition of Handwritten Digits](https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits), Alpaydin and Kaynak (1998), DOI [10.24432/C50P49](https://doi.org/10.24432/C50P49), is listed by UCI as **CC BY 4.0**. Its 8 by 8 features are integer block counts from zero through sixteen, with labels 0 through 9. The [scikit-learn data documentation](https://scikit-learn.org/stable/datasets/toy_dataset.html#optical-recognition-of-handwritten-digits-dataset) confirms that `load_digits` contains the 1,797-example test subset of the larger UCI corpus; call it that explicitly. A fresh split of this subset is a small controlled research benchmark, not the original UCI train/test protocol. Divide by sixteen and keep the same class order across base, all specialists and final model. Fixed rotations/contrast/noise domains preserve this class contract, but semantic ambiguities must be acknowledged, especially rotating 6 and 9.
+
+[UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection), Almeida and Hidalgo (2011), DOI [10.24432/C5CC84](https://doi.org/10.24432/C5CC84), is also listed by UCI as **CC BY 4.0**. The text file is one label and message per line, with `ham`/`spam` classes. Credit both authors and UCI, preserve provenance and hash downloaded bytes. Deduplicate messages before splitting. Freeze normalization, token/character mapping, truncation and class order. Same-base low-rank adapters for label-preserving perturbation domains form a tractable integration; this demonstrates text classification adapters, not generative LLM composition or general language capability. Do not publish raw personal-message excerpts as promotional examples; fabricated user inputs suffice for changed-input inference.
+
+Weights trained only for these suites should have explicit artifact terms and data attribution. CC BY dataset permission does not make all outside expert weights redistributable. Reject unknown or incompatible expert redistribution terms, or export a hash-bound reconstruction recipe instead.
+
+## Study recommendations and causal limits
+
+Freeze an index/hash ledger before training or tuning: expert-training data, repair/calibration data, selection data, and untouched confirmation data. Keep every transformed view of an original image/message in the same split. Data-assisted methods, correction learning and equal-budget ordinary joint fine-tuning must share the permitted calibration examples and preprocessing. Count examples, optimization steps, candidate evaluations, teacher forwards, wall time and peak memory separately; identical steps do not imply equal FLOPs.
+
+Use at least three specialists trained from one base. Establish each expert's intended-task gain before calling it a skill. Protect clean-task accuracy with a declared acceptable regression, independently of domain floors. Use accuracy-point deficits or another direct bounded measure; avoid division by `expert-base` gains near zero. Report per-task values, fraction of floors met, worst deficit and protected regressions before averages. Freeze the selection winner, evaluate it once on confirmation and show failed floors honestly.
+
+Rank candidate layer/subspace edits using controlled interventions evaluated on calibration/selection examples. Gradient or weight overlap can suggest candidates, but it does not establish causal interference. Include no-correction, uniform-task priority, uniform-rank allocation and no-protection ablations, along with a harmless merge and insufficient-calibration case. An intentionally conflicting expert is a negative control; incompatible class maps must be rejected before merging rather than counted as a repair failure. A trained expert with correct declared labels but destructive unrelated behavior is a valid conflict case.
+
+Reserve another seed or task combination to test whether the frozen repair policy transfers. Bootstrap confidence intervals over original examples, not correlated transformed copies, if uncertainty is reported. These old public datasets may have appeared in existing pretraining corpora; training a small base from scratch removes external model pretraining but does not establish broad real-world generalization. Floors are empirical requirements on the declared evaluation population, never universal behavior guarantees. A failed search returns “no acceptable candidate found,” not impossibility. Removing an expert from a recipe is rebuilding, not machine unlearning.

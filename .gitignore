@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+study/private/
+*.log
+.DS_Store
+exports/
+docs/media/demo-v1/
+docs/media/MODELCHORD-demo-v1.mp4
+docs/media/demo-manifest.json
+TASK_STATE.md
+study/independent-*-attempt*.json
+publication/

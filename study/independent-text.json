@@ -1,0 +1,27 @@
+{
+  "command_policy": "Independent wheel install; no user site/PYTHONPATH; copied artifact only; OS denies source/parent project, caches and all network",
+  "returncode": 0,
+  "stdout": "{\"changed_input\": true, \"logits\": [[4.048606872558594, -4.018298625946045], [-11.001921653747559, 16.78673553466797]], \"classes\": [\"ham\", \"spam\"], \"network_blocked\": true, \"parent_project_blocked\": true, \"artifact_bytes\": 128029, \"torch\": \"2.9.1\"}\n",
+  "stderr": "worker: importing torch\nworker: importing modelchord\n",
+  "observed": {
+    "changed_input": true,
+    "logits": [
+      [
+        4.048606872558594,
+        -4.018298625946045
+      ],
+      [
+        -11.001921653747559,
+        16.78673553466797
+      ]
+    ],
+    "classes": [
+      "ham",
+      "spam"
+    ],
+    "network_blocked": true,
+    "parent_project_blocked": true,
+    "artifact_bytes": 128029,
+    "torch": "2.9.1"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "source": "Author-written illustrative messages, not UCI records; no evaluation claim",
+  "texts": [
+    "Meeting moved to 2 pm. See you in the library.",
+    "WIN a FREE prize! Call now for bonus cash!"
+  ],
+  "representation": "examples/text_features.py"
+}

@@ -1,0 +1,11 @@
+# Attribution and permitted redistribution
+
+Code and locally trained weights: MIT, Copyright 2026 Nazeeh. No externally pretrained weights are redistributed. The samples and workbench arrays derived from UCI digits remain CC BY 4.0, with transformations and new partitioning documented in PROTOCOL.md.
+
+- E. Alpaydin and C. Kaynak (1998), Optical Recognition of Handwritten Digits. UCI Machine Learning Repository. [DOI 10.24432/C50P49](https://doi.org/10.24432/C50P49). [Official CC BY 4.0 dataset page](https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits). Digits are normalized /16; shifts and inversion are artificial task domains. scikit-learn bundles 1,797 examples from the original test subset. New partitions are distinct from the original benchmark protocol.
+- T. Almeida and J. Hidalgo (2011), SMS Spam Collection. UCI Machine Learning Repository. [DOI 10.24432/C5CC84](https://doi.org/10.24432/C5CC84). [Official CC BY 4.0 dataset page](https://archive.ics.uci.edu/dataset/228/sms+spam+collection). Messages are deduplicated, balanced and converted to fixed signed byte features. Raw SMS messages are not included in this repository or release. Reproduction downloads the official source.
+- Dataset license: [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The task arithmetic, TIES, DARE, Task Singular Vectors and RegMean baseline equations come from the works linked in research/RESEARCH.md. These are independent small-architecture implementations, with layerwise trimming, bias handling, ridge, off-diagonal shrinkage and tiny-layer fallbacks disclosed. No upstream implementation source was copied. mergekit and FusionBench informed the scope and baselines; MODELCHORD is not an interface for them.
+
+The fixed hashing representation uses BLAKE2b through Python's standard library; no external tokenizer vocabulary or fitted preprocessing is needed. License checks in v0.1 accept a small allowlist and require a common declared license policy across base and experts. They cannot establish legal rights or resolve arbitrary mixed-source obligations. Unsupported external weights should be rejected or used only through a permitted, hash-bound reconstruction recipe with their obligations preserved.

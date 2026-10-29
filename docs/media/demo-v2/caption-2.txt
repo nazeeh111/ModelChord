@@ -1,0 +1,1 @@
+Two pixels changed. Confidence changes to 25.7%; responsiveness is not correctness.

@@ -1,0 +1,9 @@
+{
+  "bound_files_checked": 327,
+  "lock_sha256": "a10af8c063df6b8b810fa3cb1253b1fba5e0c91cd235d005e10fa20944402a56",
+  "mismatches": [],
+  "one_shot_confirmation_marker_present": true,
+  "results_sha256": "75b7080377895c1199d9802c8d48f6c09e237fbc22fcdf8784f459b05f13ca45",
+  "source_and_recipe_changed_after_confirmation": false,
+  "verified_unix": 1793252328.566923
+}
