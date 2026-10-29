@@ -66,4 +66,4 @@ The study trains real specialists from shared small bases. Vision uses three art
 
 [Architecture, editable Mermaid](docs/ARCHITECTURE.md) · [Integrations](docs/INTEGRATIONS.md) · [Reproduction](docs/REPRODUCTION.md) · [Demo](docs/media/README.md) · [Launch draft](docs/LAUNCH_DRAFT.md)
 
-Code and locally trained weights are MIT. UCI-derived digit samples remain CC BY 4.0; raw SMS messages are excluded. [Dataset and method attribution](docs/ATTRIBUTION.md) credits Alpaydin/Kaynak, Almeida/Hidalgo, TIES, DARE, TSV, RegMean, mergekit and FusionBench. [Research notes](research/RESEARCH.md) discuss newer overlapping methods; general novelty is not claimed.
+Code and locally trained weights are MIT. UCI-derived digit samples remain CC BY 4.0; raw SMS messages are excluded. [Dataset terms and transformations](docs/ATTRIBUTION.md) retain the required data attribution and method sources. [Research notes](research/RESEARCH.md) discuss newer overlapping methods; general novelty is not claimed.
