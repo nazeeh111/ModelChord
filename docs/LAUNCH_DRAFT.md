@@ -1,13 +1,13 @@
 # Launch draft
 
-MODELCHORD is an experimental model-composition toolkit: set capability floors, combine compatible specialists, inspect what breaks, and attempt a bounded repair before exporting one static model.
+MODELCHORD composes compatible specialists into one static classifier under explicit capability floors, measures the shortfalls, and attempts a bounded low-rank repair.
 
-The first study is deliberately small and reproducible. It trains three digit-domain specialists from a common base, compares arithmetic/TIES/DARE, TSV and RegMean, then tests low-rank repair against ordinary joint fine-tuning. A separate same-base text-adapter integration uses frozen character features.
+In v0.2, the selected digit model passes all four required floors on 3,823 locked source images: 91.11% clean, 82.53% left-shifted, 83.49% right-shifted and 85.01% inverted. The data-assisted repair folds into ordinary dense weights rather than calling parent experts at inference.
 
-The result is mixed. Vision worst-task deficits shrink on two seeds, but no composed model meets every required floor. Text passes confirmation after missing selection, so it stays unaccepted. The ablations also fail to establish that each proposed component helps. All 143 attempts, failed repairs, source hashes and per-task results are included.
+The comparisons matter. Ordinary joint and fixed-factor training also pass the vision contract and score better on all three transformed tasks. Two ablations produce identical weights to repair. The separate character-feature text-adapter integration fails every floor on shifted YouTube spam comments; there is no fresh SMS confirmation. This is a bounded vision retention result, not proof that repair is necessary or generally superior.
 
-The exported artifacts run with parents and network unavailable. There is a local workbench, typed API/CLI, evaluator extension, two applications and a versioned release.
+The repository includes a local workbench, API/CLI, independent application examples, frozen source/data identities, failed attempts, exact per-task metrics and fresh-workspace reproduction evidence. All 12 v0.2 main weight outputs reproduced exactly on the tested environment. The original v0.1 negative-result study is retained. Installation, runtime isolation, interface and public-release checks are distinct delivery evidence; use their actual recorded scope when sharing.
 
-Source and evidence: https://github.com/nazeeh111/ModelChord
+[Source and evidence](https://github.com/nazeeh111/ModelChord) · [v0.2 results](RESULTS_V02.md) · [Reproduction](REPRODUCTION_V02.md) · [Short demo](media/v02/README.md)
 
-This is a draft for relevant technical sharing, not a claim of adoption or general superiority. No external messages or social posts were sent.
+Draft only. No external message or social post is authorized by this document. No invented adoption, general novelty, compute-efficiency or universal capability claim.

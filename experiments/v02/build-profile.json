@@ -1,0 +1,38 @@
+[
+  {
+    "method": "repair",
+    "whole_build_seconds": 8.909413374989526,
+    "helper_seconds": 8.822402541991323,
+    "fresh_process_peak_rss_bytes": 273940480,
+    "weights_match_frozen_candidate": true,
+    "gradient_accesses": 386640,
+    "selection_accesses": 21600,
+    "max_simultaneous_trainable_parameters": 320,
+    "scope": "CPU2threads; includes data/parent load, selection, complete search and static export; process RSS includes imports; excludes expert training and inherited RegMean construction",
+    "cold_process_including_imports_seconds": 16.26952512501157
+  },
+  {
+    "method": "joint",
+    "whole_build_seconds": 16.771997375006322,
+    "helper_seconds": 16.727639124990674,
+    "fresh_process_peak_rss_bytes": 253444096,
+    "weights_match_frozen_candidate": true,
+    "gradient_accesses": 386640,
+    "selection_accesses": 21600,
+    "max_simultaneous_trainable_parameters": 13098,
+    "scope": "CPU2threads; includes data/parent load, selection, complete search and static export; process RSS includes imports; excludes expert training and inherited RegMean construction",
+    "cold_process_including_imports_seconds": 29.12395995800034
+  },
+  {
+    "method": "fixed_factor",
+    "whole_build_seconds": 17.613217917009024,
+    "helper_seconds": 17.54901670801337,
+    "fresh_process_peak_rss_bytes": 228442112,
+    "weights_match_frozen_candidate": true,
+    "gradient_accesses": 386640,
+    "selection_accesses": 21600,
+    "max_simultaneous_trainable_parameters": 1108,
+    "scope": "CPU2threads; includes data/parent load, selection, complete search and static export; process RSS includes imports; excludes expert training and inherited RegMean construction",
+    "cold_process_including_imports_seconds": 33.65362737499527
+  }
+]

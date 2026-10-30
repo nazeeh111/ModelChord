@@ -19,7 +19,7 @@ jobs:
           python -m pip install torch==2.9.1 --index-url https://download.pytorch.org/whl/cpu
           python -m pip install '.[study,dev]'
       - name: Correctness and failure gates
-        run: python -m pytest -q
+        run: python -m pytest -q tests experiments/v02/test_search.py
       - name: Package
         run: python -m build
       - name: Independent application smoke

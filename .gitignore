@@ -14,3 +14,5 @@ docs/media/demo-manifest.json
 TASK_STATE.md
 study/independent-*-attempt*.json
 publication/
+experiments/v02/data/raw/
+docs/media/v02/render-1/

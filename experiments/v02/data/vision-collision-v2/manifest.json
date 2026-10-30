@@ -1,0 +1,22 @@
+{
+  "audit_script": "../audit_vision_views.py",
+  "audit_script_sha256": "71de88fc00d5ab1389255e2d245a2fb43ad16cb54e87dc5f9a89e400ca8f1e1c",
+  "model_inference_performed": false,
+  "outputs": {
+    "transformed-view-audit.json": {
+      "bytes": 1723,
+      "sha256": "29c0d3b13eeec96f54976bb70859aa6e68b32b30e8c0b45ed6979c3526380f95"
+    },
+    "vision-confirmation-index.json": {
+      "bytes": 1913636,
+      "sha256": "14f8568d78cec7f0e9c231dcc66f2f62aecd6d8785687552abfd185586743833"
+    }
+  },
+  "prepared_utc": "2026-10-29",
+  "prior_ledger_sha256": "47a74f41c9baff0aedd6cb49db39b2369f43b89f16340761e311237bf4616ed0",
+  "prior_source_manifest_sha256": "9e91ea26869a1657a144ff93463a8f35c4eecd8033f912b15e257eb1cd131530",
+  "publication": "Only scripts, hashes and ledgers intended for publication; raw text remains local.",
+  "raw_tes_sha256": "6ebb3d2fee246a4e99363262ddf8a00a3c41bee6014c373ed9d9216ba7f651b8",
+  "raw_tra_sha256": "e1b683cc211604fe8fd8c4417e6a69f31380e0c61d4af22e93cc21e9257ffedd",
+  "schema_version": 2
+}

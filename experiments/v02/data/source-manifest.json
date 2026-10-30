@@ -1,0 +1,88 @@
+{
+  "downloads": {
+    "optical": {
+      "archive_bytes": 591292,
+      "archive_sha256": "0d7b054fea010270e9b3f06411c654c5e59547732ad626381980baffe0a23fb0",
+      "retained_archive": false,
+      "url": "https://archive.ics.uci.edu/static/public/80/optical+recognition+of+handwritten+digits.zip"
+    },
+    "youtube": {
+      "archive_bytes": 163567,
+      "archive_sha256": "bd6182891adb3cfc8334b82c062176dfbebc563bf0ba07e31c2645f916865a0a",
+      "retained_archive": false,
+      "url": "https://archive.ics.uci.edu/static/public/380/youtube+spam+collection.zip"
+    }
+  },
+  "files": {
+    "prepare_sources.py": {
+      "bytes": 7716,
+      "sha256": "bdeabfc80d4ea2799602f80515f217e63dc8e8d30e59e531c21eb2ae17c13628"
+    },
+    "raw/Youtube01-Psy.csv": {
+      "bytes": 57438,
+      "sha256": "19797e6c77690e3c8809cfd2853ae7341390636367ba66cf5d4f4083f0b88535"
+    },
+    "raw/Youtube02-KatyPerry.csv": {
+      "bytes": 64279,
+      "sha256": "902c614f8ef24f987d6f614d7e6111aa5160b89a0646b68e007bd6044a3d123b"
+    },
+    "raw/Youtube03-LMFAO.csv": {
+      "bytes": 64419,
+      "sha256": "702ef589860a1831956f527760a3d9737ef8a07ab36c7de35b92b8898b8c3928"
+    },
+    "raw/Youtube04-Eminem.csv": {
+      "bytes": 82896,
+      "sha256": "92f54eb6b22fdf3b7ae85e1f500e5aa7442edd025e504b988a97078756187e76"
+    },
+    "raw/Youtube05-Shakira.csv": {
+      "bytes": 72706,
+      "sha256": "1d8ab47b71e8037c51183b2fc62f0591a48a4b54f3a4f5d9d3043113b274e98e"
+    },
+    "raw/optdigits.names": {
+      "bytes": 2439,
+      "sha256": "3e82f7202d72a2b7dbdbc324c8c90fe8853164f5d6ab978a071357ad3de89f02"
+    },
+    "raw/optdigits.tes": {
+      "bytes": 264712,
+      "sha256": "6ebb3d2fee246a4e99363262ddf8a00a3c41bee6014c373ed9d9216ba7f651b8"
+    },
+    "raw/optdigits.tra": {
+      "bytes": 563639,
+      "sha256": "e1b683cc211604fe8fd8c4417e6a69f31380e0c61d4af22e93cc21e9257ffedd"
+    },
+    "raw/readme.txt": {
+      "bytes": 296,
+      "sha256": "ae8652d5c2d1e1f5bf41b958c483234559985a7fc7949cebeb67b67e0be2e25e"
+    },
+    "text-transfer-index.json": {
+      "bytes": 458914,
+      "sha256": "8410534214dba9b5e007a5b40cef800c26fc30a6d250fa870e40cd4d65f60321"
+    },
+    "vision-confirmation-index.json": {
+      "bytes": 782406,
+      "sha256": "47a74f41c9baff0aedd6cb49db39b2369f43b89f16340761e311237bf4616ed0"
+    }
+  },
+  "model_inference_performed": false,
+  "prepared_utc": "2026-10-29",
+  "sources": {
+    "optical": {
+      "attribution": "Alpaydin, E. and Kaynak, C. (1998). Optical Recognition of Handwritten Digits. UCI Machine Learning Repository.",
+      "doi": "10.24432/C50P49",
+      "landing_url": "https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits",
+      "license": "CC BY 4.0",
+      "license_evidence": "Official UCI landing page License section checked 2026-10-29",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "writer_split_evidence": "Official UCI landing page Additional Information and raw/optdigits.names section 4: original TRAIN 30 writers, original TEST different 13 writers; individual writer IDs unavailable"
+    },
+    "youtube": {
+      "attribution": "Alberto, T. and Lochter, J. (2015). YouTube Spam Collection. UCI Machine Learning Repository.",
+      "author_laboratory_url": "https://lasid.dcomp.ufscar.br/youtube-spam-collection/",
+      "doi": "10.24432/C58885",
+      "landing_url": "https://archive.ics.uci.edu/dataset/380/youtube+spam+collection",
+      "license": "CC BY 4.0",
+      "license_evidence": "Official UCI landing page License section checked 2026-10-29",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  }
+}

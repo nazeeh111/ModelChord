@@ -2,3 +2,5 @@
 .help.error{color:var(--red)}
 
 .budget-fields{border:0;border-top:1px solid var(--line);padding:14px 0 0;margin:17px 0 0;min-width:0}.budget-fields legend{padding:0 8px 0 0;font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.05em}.budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.budget-grid label{font-size:10px!important;line-height:1.4;min-height:28px}.budget-grid input{display:block;width:100%;min-height:36px;padding:7px 9px;background:white;border:1px solid #cbd5cd;border-radius:3px;font-family:var(--mono);font-size:12px;color:var(--ink)}.budget-fields:disabled{opacity:.5}.budget-fields .help{font-size:10px}
+
+.budget-fields>select{margin-bottom:15px}.budget-limit{font-family:var(--mono);font-size:9px;color:var(--teal);margin:10px 0 0}.planning-target{font-family:var(--mono);font-size:11px;color:var(--teal)}.checks-cell .floor-verdict{display:block;white-space:nowrap}.checks-cell .target-verdict{font-size:8px;margin-top:4px}.state-tag{white-space:normal;max-width:235px;text-align:right}table{min-width:610px}@media(max-width:500px){table{min-width:570px}.state-tag{max-width:130px}.planning-target{font-size:10px}}

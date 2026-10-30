@@ -9,7 +9,8 @@ import tempfile
 import torch
 from modelchord import Artifact
 root=Path(__file__).resolve().parents[1]
-config=json.loads((root/'study/deployment-selection.json').read_text())
+v2=root/'experiments/v02/confirmation-lock.json'
+config=({k:{'artifact':v} for k,v in json.loads(v2.read_text())['deployments'].items()} if v2.exists() else json.loads((root/'study/deployment-selection.json').read_text()))
 for suite in ['vision','text']:
     original=Artifact.open(root/config[suite]['artifact'])
     with tempfile.TemporaryDirectory(prefix='modelchord-ci-') as tmp:

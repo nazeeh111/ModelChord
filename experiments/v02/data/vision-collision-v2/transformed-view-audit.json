@@ -1,0 +1,46 @@
+{
+  "audit": "every new source four views vs every old source four views",
+  "cross_source_collision_hash_count": 0,
+  "cross_source_collisions": [],
+  "denominator_policy": "Exclude whole new source if ANY view matches ANY old view. Within-new collisions stay entirely within this confirmation partition; retain source-level denominator and report collisions, never treat 4N transformed instances as independent source samples.",
+  "eligible_class_counts": {
+    "0": 376,
+    "1": 389,
+    "2": 380,
+    "3": 389,
+    "4": 387,
+    "5": 376,
+    "6": 377,
+    "7": 387,
+    "8": 380,
+    "9": 382
+  },
+  "eligible_new_source_count": 3823,
+  "excluded_new_source_count": 0,
+  "excluded_new_source_row_indices": [],
+  "hash_representation": "SHA256 of 64 row-major uint8 counts in 0..16; labels and task names excluded",
+  "model_inference_performed": false,
+  "new_source_rows": 3823,
+  "new_task__old_task_matching_view_pair_counts": {},
+  "new_transformed_view_instances": 15292,
+  "new_unique_transformed_view_hashes": 15292,
+  "old_source_rows": 1797,
+  "old_transformed_view_instances": 7188,
+  "old_unique_transformed_view_hashes": 7188,
+  "schema_version": 2,
+  "transformations": {
+    "clean": "original integer pixels",
+    "inverted": "16 - original integer pixels",
+    "left": "one-column left shift, final column zero",
+    "right": "one-column right shift, first column zero"
+  },
+  "within_new_collision_summary": {
+    "all_groups": 0,
+    "all_source_rows_involved": 0,
+    "eligible_conflicting_label_groups": 0,
+    "eligible_groups": 0,
+    "eligible_source_rows_involved": 0
+  },
+  "within_new_distinct_source_collision_groups_all": [],
+  "within_new_distinct_source_collision_groups_eligible": []
+}

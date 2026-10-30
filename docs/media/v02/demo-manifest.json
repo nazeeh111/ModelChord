@@ -1,0 +1,40 @@
+{
+  "shots": [
+    {
+      "source": "build-result.png",
+      "sha256": "67ad9331ee3009d844433dd961681908516964c2b9fb7adcdcc6201e8c262607",
+      "duration_seconds": 8,
+      "caption": "Selection: 4/4 required floors and planning targets. Rank 6 folded into one model."
+    },
+    {
+      "source": "inference-before.png",
+      "sha256": "25f3651383e6907f13ceb5aee0d587a4b4c27b803a702c5fa7a65ed274f7f860",
+      "duration_seconds": 6,
+      "caption": "Real static-artifact inference: digit 8 receives 99.2% confidence."
+    },
+    {
+      "source": "inference-after.png",
+      "sha256": "b4e0237a6f6ec835048d4dbac3006bde35dfcf421374520ad0fa46062070a4f4",
+      "duration_seconds": 6,
+      "caption": "Two pixels changed: confidence becomes 98.9%. Scores respond to current inputs."
+    }
+  ],
+  "master_sha256": "586f1f45894b3d6eb7973771fb4cf578f54f55c255c09d08956a3c4d47170710",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1470,
+        "height": 880,
+        "avg_frame_rate": "30/1",
+        "nb_read_frames": "600"
+      }
+    ],
+    "format": {
+      "duration": "20.000000"
+    }
+  },
+  "capture_note": "Completed real UI states with original scores, captioned and held for reading. Captioned still captures of actual executed v0.2 states, not a continuous screen recording. Selection scores are not new-cohort confirmation scores."
+}
