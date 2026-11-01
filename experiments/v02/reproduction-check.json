@@ -1,0 +1,21 @@
+{
+  "new_workspace": "/private/tmp/modelchord-v02-full-reproduction",
+  "full_suite_executed": true,
+  "all_12_weights_reproduce_exactly": true,
+  "matches": {
+    "vision-11-repair": true,
+    "vision-11-joint": true,
+    "vision-11-fixed_factor": true,
+    "vision-11-no_priority": true,
+    "vision-11-fixed_rank": true,
+    "vision-11-no_protection": true,
+    "vision-29-repair": true,
+    "vision-29-joint": true,
+    "vision-29-fixed_factor": true,
+    "text-43-repair": true,
+    "text-43-joint": true,
+    "text-43-fixed_factor": true
+  },
+  "new_confirmation_replayed": false,
+  "official_download_hashes_checked": true
+}

@@ -5,4 +5,4 @@ from .merge import merge
 from .repair import BuildBudget, Capability, repair
 
 __all__ = ["Artifact", "CompatibilityError", "export_artifact", "validate_compatibility", "MLP", "merge", "BuildBudget", "Capability", "repair"]
-__version__ = "0.1.0"
+__version__ = "0.2.0"

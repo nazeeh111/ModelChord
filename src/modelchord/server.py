@@ -12,9 +12,9 @@ import zipfile
 import numpy as np
 import torch
 from .artifacts import Artifact, validate_compatibility
-from .evaluate import classification
 from .merge import merge
 from .repair import Capability, BuildBudget, repair
+from .repair_v2 import SearchBudget, search, classification
 
 class Workbench:
     def __init__(self,project: Path):
@@ -47,11 +47,19 @@ class Workbench:
             raise ValueError("Every capability needs a floor in [0,1]")
         if type(request.get("repair",False)) is not bool:raise ValueError("repair must be boolean")
         requested_budget=request.get("budget",{})
-        if not isinstance(requested_budget,dict) or not set(requested_budget)<={"rank","rounds"}:
-            raise ValueError("Budget accepts rank and rounds")
+        if not isinstance(requested_budget,dict) or not set(requested_budget)<={"rank","rounds","steps"}:
+            raise ValueError("Budget accepts rank, rounds/stages and steps")
         if any(type(v) is not int for v in requested_budget.values()):raise ValueError("Budget values must be integers")
         build_budget=BuildBudget(rank=requested_budget.get("rank",8),rounds=requested_budget.get("rounds",4),learning_rates=(.04,.12,.35))
         if not 0<=build_budget.rank<=64 or not 0<=build_budget.rounds<=32:raise ValueError("Rank must be 0..64 and rounds 0..32")
+        algorithm=request.get('repair_algorithm','v2')
+        if algorithm not in {'v1','v2'}:raise ValueError('Choose repair algorithm v1 or v2')
+        margin=request.get('planning_margin',.03) if algorithm=='v2' and request.get('repair') else 0.
+        if type(margin) not in (int,float) or not 0<=margin<=.1:raise ValueError('Planning margin must be in [0,.1]')
+        if algorithm=='v2' and build_budget.rounds>8:raise ValueError('v2 allows at most8 stages')
+        steps=requested_budget.get('steps',30)
+        if not 1<=steps<=64:raise ValueError('Steps per trial must be 1..64')
+        if build_budget.rank<2 or build_budget.rounds==0:margin=0.
         key=uuid.uuid4().hex
         root=self.project/"exports"/key
         base=Artifact.open(self.paths[self.config["base"]["id"]])
@@ -65,16 +73,22 @@ class Workbench:
                 "fraction_floors_met":sum(initial[n]["accuracy"]>=floors[n] for n in names)/len(names),"rank_used_upper_bound":0,"attempts":0}
         final=ordinary
         if request.get("repair",False):
-            caps=[Capability(c["name"],floors[c["name"]],c.get("protected",False),c.get("max_regression",.01)) for c in self.config["capabilities"]]
-            final,report=repair(ordinary,self.calibration,self.batches,caps,root/"repaired",budget=build_budget)
+            caps=[Capability(c["name"],min(1.,floors[c["name"]]+margin),c.get("protected",False),c.get("max_regression",.01)) for c in self.config["capabilities"]]
+            if algorithm=='v2':
+                stages=min(build_budget.rounds,build_budget.rank//2)
+                final,report=search(ordinary,self.calibration,self.batches,caps,root/"repaired",budget=SearchBudget(rank=build_budget.rank,stages=stages,steps_per_trial=steps))
+                report['effective_selection_floors']=report['effective_floors'];report['attempts']=report['trial_count']
+            else:final,report=repair(ordinary,self.calibration,self.batches,caps,root/"repaired",budget=build_budget)
         metrics={n:classification(final.model(),*b) for n,b in self.batches.items()}
+        report['requested_floors']=floors;report['planning_margin']=margin
+        report['required_fraction_floors_met']=sum(metrics[n]['accuracy']+1e-7>=floors[n] for n in names)/len(names)
         self.paths[key]=final.path
         archive=root/"modelchord.zip"
         with zipfile.ZipFile(archive,"w",zipfile.ZIP_DEFLATED) as z:
             for p in sorted(final.path.iterdir()):z.write(p,p.name)
             z.writestr("build-report.json",json.dumps(report,indent=2))
         self.archives[key]=archive
-        result={"id":key,"label":f"{method} {'+ repair' if request.get('repair') else ''}","report":report,"status":report["status"],
+        result={"id":key,"label":f"{method} {'+ '+algorithm+' repair' if request.get('repair') else ''}","report":report,"status":report["status"],
                 "metrics":metrics,"ordinary_metrics":initial,"download_url":f"/api/download/{key}",
                 "model":{"bytes":sum(p.stat().st_size for p in final.path.iterdir()),"parameters":sum(t.numel() for t in final.state().values())},
                 "recipe":final.manifest["provenance"]}
